@@ -1,0 +1,60 @@
+<div class="register-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+  <div class="register-card">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>{{accommodation.name}}</mat-card-title>
+        <mat-card-subtitle>{{accommodation.city!.name!}}, {{accommodation.city!.country!.name!}}</mat-card-subtitle>
+        <div class="slots">
+          <span style=" padding-top: 15px; color: red"
+                *ngIf="isAccommodationAlmostFull(accommodation)"><mat-icon>local_hotel</mat-icon> {{accommodation.numberOfBookedSlots}}/{{accommodation.totalNumberOfSlots}}</span>
+          <span style=" padding-top: 15px; color: green"
+                *ngIf="!isAccommodationAlmostFull(accommodation)"><mat-icon>local_hotel</mat-icon> {{accommodation.numberOfBookedSlots}}/{{accommodation.totalNumberOfSlots}}</span>
+        </div>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="accommodation-image">
+          <img *ngIf="accommodation.photo && accommodation.photo.photoFile" mat-card-image class="img-responsive"
+               src="{{'data:image/jpg;base64,' + accommodation.photo.photoFile}}" alt="">
+          <img *ngIf="!accommodation.photo || !accommodation.photo.photoFile" mat-card-image class="img-responsive"
+               src="../../../assets/images/no_image_available.jpg" alt="">
+        </div>
+      </mat-card-content>
+
+      <mat-card-content>
+        <div class="description">
+          <h1 style="text-decoration: underline; opacity: 0.4;">Description</h1>
+          <p>{{accommodation.description}}</p>
+        </div>
+      </mat-card-content>
+
+      <mat-card-content>
+        <br>
+        <mat-card style="max-width: 300px; margin: 0 auto;">
+          <mat-card-content>
+            <mat-icon>location_on</mat-icon>
+            {{accommodation.address}}
+          </mat-card-content>
+        </mat-card>
+      </mat-card-content>
+
+      <mat-card-content>
+        <mat-card style="max-width: 300px; margin: 0 auto;">
+          <mat-card-content>
+            <mat-icon>contact_phone</mat-icon>
+            {{accommodation.phone}}
+          </mat-card-content>
+        </mat-card>
+        <br>
+      </mat-card-content>
+
+      <mat-card-content>
+        <button class="see-reviews-button" mat-raised-button routerLink="/reviews/{{accommodation.accommodationId}}">See Reviews</button>
+        <button class="book-slot-button" mat-raised-button routerLink="/new-booking/{{accommodation.accommodationId}}">Book</button>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+
+</div>
