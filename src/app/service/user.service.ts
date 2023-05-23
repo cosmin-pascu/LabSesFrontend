@@ -1,57 +1,49 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {AddUser} from "../domain/AddUser";
 import {Observable} from "rxjs";
 import {User} from "../domain/User";
-import {MockService} from "./mock.service";
-import { of } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private apiBaseUrl = 'http://localhost:8080/find-booking/users';
-  private reviewsBaseUrl = 'http://localhost:8000/find-booking/users';
+  private fullUrl = 'https://laboratoareses-default-rtdb.firebaseio.com/patients.json?auth=nWxrn5N9M2RybtanLvmnYG5bWV1ieJFduvBzj77a';
 
-  constructor(private http: HttpClient,
-              private mockService: MockService) {
+  private baseUrl = 'https://laboratoareses-default-rtdb.firebaseio.com/patients';
+
+  private apiKey = 'auth=nWxrn5N9M2RybtanLvmnYG5bWV1ieJFduvBzj77a';
+
+  constructor(private http: HttpClient) {
   }
 
-  createUser(user: AddUser): Observable<any> {
-    const url = this.apiBaseUrl + '/register'
+  createUser(user: User): Observable<any> {
+    const url = this.fullUrl;
 
     return this.http.post(url, user);
   }
 
-  createUserReviews(user: AddUser): Observable<any> {
-    const url = this.reviewsBaseUrl + '/register'
+  getAllUsers(): Observable<Array<Object>> {
+    const url = this.fullUrl;
 
-    return this.http.post(url, user);
+    return this.http.get<Array<Object>>(url);
   }
 
-  getUserByEmail(email: string): Observable<User> {
-    const url = this.apiBaseUrl + '/byEmail?email=' + email;
+  getUserById(id: string): Observable<User> {
+    const url = this.baseUrl + '/' + id + '.json?' + this.apiKey;
 
-    return this.http.get(url);
+    return this.http.get<User>(url)
   }
 
-  getAllUsers(): Observable<Array<User>> {
-    const url = this.apiBaseUrl;
-
-    // return of(this.mockService.mockUsers(5));
-    return this.http.get<Array<User>>(url);
-  }
-
-  changeUserRole(user: User): Observable<any> {
-    const url = this.apiBaseUrl + '/change-role'
+  editUser(id: string, user: User): Observable<any> {
+    const url = this.baseUrl + '/' + id + '.json?' + this.apiKey;
 
     return this.http.put(url, user);
   }
 
-  getLoggedInUser(): Observable<User> {
-    const url = this.apiBaseUrl + '/logged-in-user'
+  deleteUser(id: string): Observable<any> {
+    const url = this.baseUrl + '/' + id + '.json?' + this.apiKey;
 
-    return this.http.get(url);
+    return this.http.delete(url);
   }
 }

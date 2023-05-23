@@ -6,3 +6,7 @@
 .th.mat-sort-header-sorted {
   color: black;
 }
+
+.table-container {
+  background-color: #002b5c;
+}

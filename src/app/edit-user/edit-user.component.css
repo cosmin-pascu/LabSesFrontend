@@ -14,11 +14,11 @@ td {
 
 
 .add-accommodation-wrapper {
-  background-image: url("../../../assets/images/login_page_background.jpeg");
   background-repeat: no-repeat;
   height: 100%;
   background-position: center;
   background-size: cover;
+  background-color: #002b5c;
 }
 
 /*.example-full-width {*/

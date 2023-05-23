@@ -1,10 +1,11 @@
-import {RoleType} from "./RoleType";
-
 export class User {
-  userId?: number;
-  firsName?: string;
+  userId?: string;
+  firstName?: string;
   lastName?: string;
   email?: string;
   password?: string;
-  roleType?: RoleType;
+  gender?: string;
+  birthDate?: string;
+  address?: string;
+  phone?: number;
 }

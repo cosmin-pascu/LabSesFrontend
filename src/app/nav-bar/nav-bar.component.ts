@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../service/auth.service";
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthorizationService} from "../service/authorization.service";
 
@@ -10,18 +9,13 @@ import {AuthorizationService} from "../service/authorization.service";
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private authService: AuthService,
-              private router: Router,
+  constructor(private router: Router,
               private authorizationService: AuthorizationService) { }
 
   ngOnInit(): void {
-    if (!this.isUserLoggedIn()) {
-      this.redirectToLogin();
-    }
   }
 
   logout(): void {
-    this.authService.logout();
     this.redirectToLogin();
   }
 
@@ -30,12 +24,9 @@ export class NavBarComponent implements OnInit {
     this.router.navigateByUrl(url);
   }
 
-  isUserLoggedIn(): boolean {
-    return this.authService.isLoggedIn();
-  }
 
-  isUserAdmin(): boolean {
-    return this.authorizationService.isUserAdmin();
-  }
+  // isUserAdmin(): boolean {
+  //   return this.authorizationService.isUserAdmin();
+  // }
 
 }

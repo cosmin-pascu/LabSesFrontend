@@ -13,23 +13,19 @@ td {
 }
 
 
-.add-booking-wrapper {
-  background-image: url("../../assets/images/login_page_background.jpeg");
+.add-accommodation-wrapper {
   background-repeat: no-repeat;
   height: 100%;
   background-position: center;
   background-size: cover;
+  background-color: #002b5c;
 }
 
-.other-details-field {
-  width: 100%;
-}
+/*.example-full-width {*/
+/*  width: 300px;*/
+/*}*/
 
-.example-full-width {
-  width: 300px;
-}
-
-.add-booking-card {
+.add-accommodation-card {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,4 +41,8 @@ td {
   margin-top: 20px;
   color: red;
 }
+
+/*.mat-raised-button {*/
+/*  background-color: green;*/
+/*}*/
 

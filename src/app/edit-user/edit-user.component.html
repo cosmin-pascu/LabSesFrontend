@@ -1,0 +1,99 @@
+<div class="add-accommodation-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+  <div class="add-accommodation-card">
+    <mat-card class="box">
+
+      <mat-card-header>
+        <mat-card-title>Add user</mat-card-title>
+      </mat-card-header>
+
+      <form class="example-form">
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" id="firstName" name="firstName" [(ngModel)]="user.firstName">
+          </mat-form-field></td>
+        </tr>
+        </table>
+
+        <!---------------     LastName    ---------------------------------->
+
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" id="lastName" name="lastName" [(ngModel)]="user.lastName">
+          </mat-form-field></td>
+        </tr></table>
+
+        <!---------------     Email    ---------------------------------->
+
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" id="email" name="email" [(ngModel)]="user.email">
+          </mat-form-field></td>
+        </tr></table>
+
+        <!---------------     Password    ---------------------------------->
+
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput type="text" id="password" name="password" [(ngModel)]="user.password">
+          </mat-form-field></td>
+        </tr></table>
+
+        <!---------------     PHONE    ---------------------------------->
+
+        <p>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Telephone</mat-label>
+            <input type="tel" matInput id="telephone" name="telephone" [(ngModel)]="user.phone">
+            <mat-icon matSuffix>call</mat-icon>
+          </mat-form-field>
+        </p>
+
+        <!---------------     BirthDate    ---------------------------------->
+
+        <p>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Birthdate</mat-label>
+            <input matInput [matDatepicker]="pickerCheckInDate" [(ngModel)]="user.birthDate" name="birthDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="pickerCheckInDate"></mat-datepicker-toggle>
+            <mat-datepicker #pickerCheckInDate></mat-datepicker>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Gender</mat-label>
+            <mat-select [(ngModel)]="user.gender" name="gender">
+              <mat-option *ngFor="let gender of genders" [value]="gender">
+                {{gender}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+
+        <!---------------     Address   -------------------------------->
+
+        <p>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Address</mat-label>
+            <input type="text" matInput id="address" name="address" [(ngModel)]="user.address">
+            <mat-icon matSuffix>location_on</mat-icon>
+          </mat-form-field>
+        </p>
+
+        <!---------------     Agree with terms   -------------------------------->
+
+        <mat-checkbox>Agree with terms</mat-checkbox>
+      </form>
+
+      <button mat-raised-button style="background-color:#3185FC;" class="add-btn" (click)="onSubmit()">Submit</button>
+
+    </mat-card>
+  </div>
+
+</div>

@@ -10,7 +10,7 @@
         <mat-card-content>
           <mat-form-field class="example-full-width">
 <!--            to be changed when parsed-->
-            <input type="text" id="firstName" name="firstName" matInput placeholder="First Name" [(ngModel)]="user.firsName" required #firstName="ngModel">
+            <input type="text" id="firstName" name="firstName" matInput placeholder="First Name" [(ngModel)]="user.firstName" required #firstName="ngModel">
             <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
                  class="invalid-message">
               First name is required.
