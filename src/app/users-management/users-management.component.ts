@@ -5,6 +5,8 @@ import {UserService} from "../service/user.service";
 import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {Router} from "@angular/router";
 import {MatSort, Sort} from "@angular/material/sort";
+import {UserMappingService} from "../service/user-mapping.service";
+import {Hl7User} from "../domain/Hl7User";
 
 @Component({
   selector: 'app-users-management',
@@ -20,14 +22,16 @@ export class UsersManagementComponent implements OnInit {
 
   constructor(private userService: UserService,
               private _liveAnnouncer: LiveAnnouncer,
-              private router: Router) { }
+              private router: Router,
+              private userMappingService: UserMappingService) { }
 
   @ViewChild(MatSort) sortUsers: MatSort = new MatSort();
 
   ngOnInit(): void {
     this.userService.getAllUsers().subscribe(result => {
       for (const key in result) {
-        let user: User = result[key];
+        let hl7user: Hl7User = result[key];
+        let user: User = this.userMappingService.mapHl7UserToUser(hl7user);
         user.userId = key;
         this.usersList.push(user);
       }

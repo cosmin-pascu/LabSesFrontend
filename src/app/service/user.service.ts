@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "../domain/User";
+import {Hl7User} from "../domain/Hl7User";
 
 
 @Injectable({
@@ -17,10 +18,10 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
-  createUser(user: User): Observable<any> {
+  createUser(hl7user: Hl7User): Observable<any> {
     const url = this.fullUrl;
 
-    return this.http.post(url, user);
+    return this.http.post(url, hl7user);
   }
 
   getAllUsers(): Observable<Array<Object>> {
@@ -29,16 +30,16 @@ export class UserService {
     return this.http.get<Array<Object>>(url);
   }
 
-  getUserById(id: string): Observable<User> {
+  getUserById(id: string): Observable<Hl7User> {
     const url = this.baseUrl + '/' + id + '.json?' + this.apiKey;
 
-    return this.http.get<User>(url)
+    return this.http.get<Hl7User>(url)
   }
 
-  editUser(id: string, user: User): Observable<any> {
+  editUser(id: string, hl7User: Hl7User): Observable<any> {
     const url = this.baseUrl + '/' + id + '.json?' + this.apiKey;
 
-    return this.http.put(url, user);
+    return this.http.put(url, hl7User);
   }
 
   deleteUser(id: string): Observable<any> {
